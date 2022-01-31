@@ -8,11 +8,16 @@
 import UIKit
 
 class SeguePushViewController: UIViewController {
-
+    var name : String?
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("SeguePush 뷰가 로드 되었습니다.")
+        self.nameLabel.text = name
+        self.nameLabel.sizeToFit()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
