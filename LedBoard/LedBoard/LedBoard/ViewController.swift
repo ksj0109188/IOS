@@ -18,6 +18,7 @@ class ViewController: UIViewController, LedBoardSettingDelegate{
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let settingViewController = segue.destination as?  settingViewController{
+            print("check prepare")
             settingViewController.delegate = self
             settingViewController.ledText = self.contentLabel.text
             settingViewController.textColor = self.contentLabel.textColor
