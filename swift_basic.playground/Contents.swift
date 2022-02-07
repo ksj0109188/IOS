@@ -884,7 +884,7 @@ print(status2)
  2. 일급 객체의 역활을 할 수 있음
     ->일급 객체란?
     ->전달 인자로 보낼수 있고, 변수/상수 등으로 저장하거나 전달할 수 있으며, 함수의 반환 값이 될 수 있다.
- 3. 보통 클로저라 하면,  익명함수를 지칭한다.(unNamed closure)하지만, 익명함수(Named Clousre)가 없는 게 아니다.
+ 3. 보통 클로저라 하면,  익명함수를 지칭한다.(unNamed closure)하지만, 함수(Named Clousre)가 없는 게 아니다.
  4. 표현식
  {
  //(매개 변수) -> 리턴 타입 in
@@ -905,7 +905,7 @@ var hello2 = {
     return "Hello, \(name)"
 }
 
-//hello2(name:"Gunter")  -> 클로저에서 전달인자 레이블을 적으면 에러가 발생
+//print(hello2(name:"Gunter"))  -> 클로저에서 전달인자 레이블을 적으면 에러가 발생
 print(hello2("Gunter"))
 
 //클로저를 함수의 파라미터로 전달하기
@@ -998,3 +998,9 @@ let reduceResult = someArray.reduce(0){ //초기값 숫자0부터 누적시작
 }
 
 print("reduce \(reduceResult)")
+
+class voidClass{
+    func callVoidClass(){
+        print("call void class")
+    }
+}
