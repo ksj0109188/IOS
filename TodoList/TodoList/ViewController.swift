@@ -128,8 +128,9 @@ extension ViewController:UITableViewDataSource{
         
         //순서가 변경되면, map의 순서도 변경해주어야 한다. -> 그 상태로 유지되면, 행의 위치를 변경한 이유가 없어짐
         var tasks = self.tasks
-        let task = tasks[sourceIndexPath.row] //0
-        tasks.remove(at: sourceIndexPath.row) //
+        //배열의 특성상 삭제된 인덱스는 앞당겨 진다 -> ex) 0, 1, 2 일 경우 1이 삭제된다면, 삭제되기전 2번째 인덱스가 삭제후 1번째 인덱스로 되는 메커니즘을 생각해 아래 코드를 생각하면 이해가 된다.
+        let task = tasks[sourceIndexPath.row]
+        tasks.remove(at: sourceIndexPath.row)
         tasks.insert(task, at: destinationIndexPath.row)
         self.tasks = tasks
     }
