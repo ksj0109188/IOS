@@ -199,9 +199,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JE-ez-HIx">
                                         <rect key="frame" x="117" y="0.0" width="67" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button">
-                                            <color key="baseForegroundColor" systemColor="systemPinkColor"/>
-                                        </buttonConfiguration>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -233,7 +231,7 @@
         <!--View Controller-->
         <scene sceneID="5JM-A5-O42">
             <objects>
-                <viewController id="78c-bN-Nz0" sceneMemberID="viewController">
+                <viewController id="78c-bN-Nz0" customClass="ViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ljn-Of-dDd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -279,6 +277,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="153" height="146"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="vLQ-3o-Vhc" id="8Ij-bR-PHz"/>
+                                            <outlet property="titleLabel" destination="omu-IA-D80" id="gPJ-p7-3BO"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -299,6 +301,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="B13-u9-9YL" id="aba-ho-LgE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIc-cD-axO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -375,8 +380,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="일기 작성" id="1D2-vr-3ZT">
-                        <barButtonItem key="rightBarButtonItem" title="등록" id="sUA-ps-86e"/>
+                        <barButtonItem key="rightBarButtonItem" title="등록" id="sUA-ps-86e">
+                            <connections>
+                                <action selector="tabConfirmButton:" destination="20f-s5-8a2" id="p6I-J6-Cvs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="confirmButton" destination="sUA-ps-86e" id="kId-H8-Qif"/>
+                        <outlet property="contentsTextView" destination="9cy-7a-IjM" id="Ypy-qf-XEZ"/>
+                        <outlet property="dateTextField" destination="CIZ-9Q-MVP" id="65R-Tm-5LZ"/>
+                        <outlet property="titleTextField" destination="lu2-a2-IRP" id="qns-DL-EsG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QL-zq-TsO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -393,9 +408,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
