@@ -43,7 +43,7 @@ class WriteDiaryViewController: UIViewController {
         self.datePicker.preferredDatePickerStyle = .wheels
         //UI컨트롤러 객체가 이벤트의 응답하는 방식을 설정하는 메서드(target:이벤트를 처리할 객체, 현재 컨트롤러에서 처리할 것이니 self | action: 이벤트 발생시 호출될 메서드 |for parameter에는 어떤 이벤트가 발생할때 호출될 것인지 설정
         self.datePicker.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
-        
+        self.datePicker.locale = Locale(identifier: "ko-KR")
         //dateTextfield를 선택했을대 키보드가 아닌 dateePciker가 나타남
         self.dateTextField.inputView = self.datePicker
     }
