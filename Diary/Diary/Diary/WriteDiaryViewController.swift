@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WriteDiaryViewController: UIViewController {
+class WriteDiaryViewController: UIViewController{
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
@@ -21,6 +21,8 @@ class WriteDiaryViewController: UIViewController {
         super.viewDidLoad()
         self.configurConteentsTextView()
         self.configureDatePicker()
+        self.configureInputField()
+        self.confirmButton.isEnabled = false
     }
     
     @IBAction func tabConfirmButton(_ sender: UIBarButtonItem) {
@@ -36,6 +38,11 @@ class WriteDiaryViewController: UIViewController {
         self.contentsTextView.layer.borderWidth = 0.5
         self.contentsTextView.layer.cornerRadius = 5.0
     }
+    //datePciker, 키보드 선택후 빈 화면을 터치시 datePicker, 키보드 닫기
+    //user가 화면을 터치하면 발생하는 이벤트 메서드
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     private func configureDatePicker(){
         //날짜만 설정할 수 있는 모드
@@ -46,6 +53,26 @@ class WriteDiaryViewController: UIViewController {
         self.datePicker.locale = Locale(identifier: "ko-KR")
         //dateTextfield를 선택했을대 키보드가 아닌 dateePciker가 나타남
         self.dateTextField.inputView = self.datePicker
+        //등록 버튼을 활성화 하기 위해 DatePciker를 통해 값이 들어와도 TextField에 editting 액션이 발생하기 함으로써 유효성 검사 메소드(dateTextFieldDidChange)를 호출하게 한다.
+    }
+    
+    private func configureInputField(){
+        //여기서 왜 delegate 객체를 사용하는지 모르겠음.
+        self.contentsTextView.delegate = self
+        self.titleTextField.addTarget(self, action: #selector(TitleTextFieldDidChange(_:)), for: .editingChanged)
+        self.dateTextField.addTarget(self, action: #selector(dateTextFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc private func TitleTextFieldDidChange(_ textField: UITextField){
+        self.validateInputField()
+    }
+    
+    @objc private func dateTextFieldDidChange(_ dateTextField:UITextField){
+        self.validateInputField()
+    }
+    
+    private func validateInputField(){
+        self.confirmButton.isEnabled = !(self.titleTextField.text?.isEmpty ?? true) && !(self.dateTextField.text?.isEmpty ?? true) && !self.contentsTextView.text.isEmpty
     }
     
     @objc private func datePickerValueDidChange(_ datePicker : UIDatePicker){
@@ -55,5 +82,13 @@ class WriteDiaryViewController: UIViewController {
         formatter.locale = Locale(identifier: "ko_KR")
         self.diaryDate = datePicker.date
         self.dateTextField.text = formatter.string(from: datePicker.date)
+        self.dateTextField.sendActions(for: .editingChanged)
+    }
+}
+
+extension WriteDiaryViewController: UITextViewDelegate {
+    //텍스트 뷰에 텍스트가 입력 될때마다 호출되는 메서드
+    func textViewDidChange(_ textView: UITextView) {
+        self.validateInputField()
     }
 }
