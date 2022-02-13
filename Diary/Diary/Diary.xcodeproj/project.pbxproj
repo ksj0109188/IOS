@@ -18,6 +18,7 @@
 		3B96E3E527B2AF0800821D59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B96E3E327B2AF0800821D59 /* Main.storyboard */; };
 		3B96E3E727B2AF0A00821D59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B96E3E627B2AF0A00821D59 /* Assets.xcassets */; };
 		3B96E3EA27B2AF0A00821D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B96E3E827B2AF0A00821D59 /* LaunchScreen.storyboard */; };
+		3BB5409727B7FA0A00B68755 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB5409627B7FA0A00B68755 /* Diary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		3B96E3E627B2AF0A00821D59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B96E3E927B2AF0A00821D59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B96E3EB27B2AF0A00821D59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BB5409627B7FA0A00B68755 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				3B96E3DF27B2AF0800821D59 /* SceneDelegate.swift */,
 				3B96E3E127B2AF0800821D59 /* ViewController.swift */,
 				3B96E3E327B2AF0800821D59 /* Main.storyboard */,
+				3BB5409627B7FA0A00B68755 /* Diary.swift */,
 				3B12BD6C27B541160039C026 /* DiaryDetailViewController.swift */,
 				3B12BD6A27B53B380039C026 /* WriteDiaryViewController.swift */,
 				3B12BD6827B533FF0039C026 /* StarCell.swift */,
@@ -158,6 +161,7 @@
 				3B12BD6927B533FF0039C026 /* StarCell.swift in Sources */,
 				3B96E3DE27B2AF0800821D59 /* AppDelegate.swift in Sources */,
 				3B12BD6727B531850039C026 /* SatrViewController.swift in Sources */,
+				3BB5409727B7FA0A00B68755 /* Diary.swift in Sources */,
 				3B12BD6D27B541160039C026 /* DiaryDetailViewController.swift in Sources */,
 				3B96E3E027B2AF0800821D59 /* SceneDelegate.swift in Sources */,
 				3B12BD6527B531170039C026 /* DiaryCell.swift in Sources */,

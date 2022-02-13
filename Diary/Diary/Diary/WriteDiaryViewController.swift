@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol WriteDiaryViewDelegate : AnyObject{
+    func didSelectRegister(diary: Diary)
+}
+
 class WriteDiaryViewController: UIViewController{
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -16,6 +20,7 @@ class WriteDiaryViewController: UIViewController{
     //날짜 설정(datePicker와 그 값을 저장하는 Date객체 생성)
     private let datePicker = UIDatePicker()
     private var diaryDate:Date?
+    weak var delegate : WriteDiaryViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,13 @@ class WriteDiaryViewController: UIViewController{
     }
     
     @IBAction func tabConfirmButton(_ sender: UIBarButtonItem) {
+        guard let title = self.titleTextField.text else {return}
+        guard let contents = self.contentsTextView.text else {return}
+        guard let date = self.diaryDate else {return}
+        let diary = Diary(title: title, contents: contents, date: date, isStar: false)
+        self.delegate?.didSelectRegister(diary: diary)
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     //textView border setting
@@ -63,7 +75,7 @@ class WriteDiaryViewController: UIViewController{
         self.dateTextField.addTarget(self, action: #selector(dateTextFieldDidChange(_:)), for: .editingChanged)
     }
     
-    @objc private func TitleTextFieldDidChange(_ textField: UITextField){
+   @objc private func TitleTextFieldDidChange(_ textField: UITextField){
         self.validateInputField()
     }
     
