@@ -9,6 +9,8 @@ import UIKit
 protocol sendDataDelegate : AnyObject{
     func sendData(name:String)
 }
+
+
 class codePresentViewController: UIViewController {
 
     @IBOutlet weak var FrameLabel: UILabel!
