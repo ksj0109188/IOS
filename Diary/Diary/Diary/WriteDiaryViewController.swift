@@ -37,7 +37,6 @@ class WriteDiaryViewController: UIViewController{
         let diary = Diary(title: title, contents: contents, date: date, isStar: false)
         self.delegate?.didSelectRegister(diary: diary)
         self.navigationController?.popViewController(animated: true)
-        
     }
     
     //textView border setting
