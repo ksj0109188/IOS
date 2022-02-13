@@ -2,3 +2,4 @@
 swift_basic.playground/xcuserdata/kim.xcuserdatad/xcschemes/xcschememanagement.plist
 *.xcuserstate
 Calculator/Calculator/Calculator.xcodeproj/project.xcworkspace/xcuserdata/kim.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcbkptlist
