@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UICollectionViewDelegate, WriteDiaryViewDelegate {
+class ViewController: UIViewController, WriteDiaryViewDelegate {
     
     private var diaryList = [Diary](){
         didSet{
@@ -105,4 +105,25 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
         return CGSize(width: (UIScreen.main.bounds.width / 2)-20, height: 200)
     }
 
+}
+
+//cell을 선택하면 자동으로 호출
+//일기장 상세(detail Diary)에 data를 보내기 위해 선택된 cell index추출.
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "DiaryDetailViewController") as? DiaryDetailViewController else { return }
+        let diary = self.diaryList[indexPath.row]
+        viewController.diary = diary
+        viewController.indexPath = indexPath
+        viewController.delegate = self
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension ViewController: DiaryDetailViewDelegate{
+    func didSelectDelete(indexPath: IndexPath) {
+        print(indexPath,  indexPath.row)
+        self.diaryList.remove(at: indexPath.row)
+        self.collectionView.deleteItems(at: [indexPath])
+    }
 }
