@@ -9,12 +9,15 @@ import UIKit
 
 protocol DiaryDetailViewDelegate : AnyObject{
     func didSelectDelete(indexPath : IndexPath)
+    func didSelectStar(indexPath: IndexPath, isStar : Bool)
 }
 
 class DiaryDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
+    var starButton : UIBarButtonItem?
+    
     weak var delegate: DiaryDetailViewDelegate?
     var diary : Diary?
     var indexPath : IndexPath?
@@ -28,6 +31,23 @@ class DiaryDetailViewController: UIViewController {
         self.titleLabel.text = diary.title
         self.contentTextView.text = diary.contents
         self.dateLabel.text = dateToString(date: diary.date)
+        self.starButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(tapStarButton))
+        self.starButton?.image = diary.isStar ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        self.starButton?.tintColor = .orange
+        self.navigationItem.rightBarButtonItem = self.starButton
+    }
+    
+    @objc func tapStarButton(){
+        guard let isStar = self.diary?.isStar else { return }
+        guard let indexPath = self.indexPath else { return }
+        if isStar{
+            self.starButton?.image = UIImage(systemName: "star")
+        }else{
+            self.starButton?.image = UIImage(systemName: "star.fill")
+        }
+        self.diary?.isStar = !isStar
+        self.delegate?.didSelectStar(indexPath: indexPath, isStar: self.diary?.isStar ?? false)
+
     }
     
     private func dateToString(date : Date) -> String{

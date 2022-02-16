@@ -132,8 +132,10 @@ extension ViewController: UICollectionViewDelegate {
 
 extension ViewController: DiaryDetailViewDelegate{
     func didSelectDelete(indexPath: IndexPath) {
-        print(indexPath,  indexPath.row)
         self.diaryList.remove(at: indexPath.row)
         self.collectionView.deleteItems(at: [indexPath])
+    }
+    func didSelectStar(indexPath: IndexPath, isStar: Bool) {
+        self.diaryList[indexPath.row].isStar = isStar
     }
 }
