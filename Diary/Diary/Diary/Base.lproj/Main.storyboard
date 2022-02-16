@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="28" y="503"/>
         </scene>
-        <!--Satr View Controller-->
+        <!--Star View Controller-->
         <scene sceneID="pi5-od-8pl">
             <objects>
-                <viewController id="Ed3-mU-IL2" customClass="SatrViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ed3-mU-IL2" customClass="StarViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9eh-kR-FIQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +79,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StarCell" id="bB1-lJ-rqI" customClass="StarCell" customModule="Diary" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="StarCell" reuseIdentifier="StarCell" id="bB1-lJ-rqI" customClass="StarCell" customModule="Diary" customModuleProvider="target">
                                         <rect key="frame" x="0.5" y="0.0" width="413" height="116"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="egd-zw-oFT">
@@ -111,6 +111,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="413" height="116"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="eRi-qD-2Pf" id="tJj-hZ-ADX"/>
+                                            <outlet property="titleLabel" destination="h49-Su-p8M" id="cI3-AK-7QI"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -125,6 +129,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Goa-G2-xfb"/>
+                    <connections>
+                        <outlet property="collectionView" destination="b6o-BL-k6V" id="xF8-hq-v1v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgg-49-b8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

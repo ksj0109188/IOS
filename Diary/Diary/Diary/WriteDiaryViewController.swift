@@ -25,7 +25,7 @@ class WriteDiaryViewController: UIViewController{
     
     
     private let datePicker = UIDatePicker()
-    private var diaryDate:Date?
+    private var diaryDate:  Date?
     weak var delegate : WriteDiaryViewDelegate?
     
     var diaryEditorMode: DiaryEditMode = .new
