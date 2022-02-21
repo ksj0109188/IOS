@@ -7,18 +7,12 @@
 
 import UIKit
 
-protocol DiaryDetailViewDelegate : AnyObject{
-    func didSelectDelete(indexPath : IndexPath)
-    func didSelectStar(indexPath: IndexPath, isStar : Bool)
-}
-
 class DiaryDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
     var starButton : UIBarButtonItem?
     
-    weak var delegate: DiaryDetailViewDelegate?
     var diary : Diary?
     var indexPath : IndexPath?
     override func viewDidLoad() {
@@ -46,8 +40,13 @@ class DiaryDetailViewController: UIViewController {
             self.starButton?.image = UIImage(systemName: "star.fill")
         }
         self.diary?.isStar = !isStar
-        self.delegate?.didSelectStar(indexPath: indexPath, isStar: self.diary?.isStar ?? false)
-
+        NotificationCenter.default.post(
+            name: NSNotification.Name("starDiary"),
+            object: [
+                "isStar":self.diary?.isStar ?? false,
+                "indexPath" : indexPath
+                    ],
+            userInfo: nil)
     }
     
     private func dateToString(date : Date) -> String{
@@ -84,7 +83,10 @@ class DiaryDetailViewController: UIViewController {
     
     @IBAction func tapDeleteButton(_ sender: UIButton) {
         guard let indexPath = indexPath else { return }
-        self.delegate?.didSelectDelete(indexPath: indexPath)
+        NotificationCenter.default.post(
+            name: NSNotification.Name("deleteDiary"),
+            object: indexPath,
+            userInfo: nil)
         self.navigationController?.popViewController(animated: true)
         
     }
