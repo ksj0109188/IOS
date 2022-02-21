@@ -37,7 +37,6 @@ class WriteDiaryViewController: UIViewController{
         self.configureInputField()
         self.configureEditMode()
         self.confirmButton.isEnabled = false
-        
     }
     
     @IBAction func tabConfirmButton(_ sender: UIBarButtonItem) {
@@ -45,7 +44,6 @@ class WriteDiaryViewController: UIViewController{
         guard let contents = self.contentsTextView.text else {return}
         guard let date = self.diaryDate else {return}
         let diary = Diary(title: title, contents: contents, date: date, isStar: false)
-        self.delegate?.didSelectRegister(diary: diary)
         self.navigationController?.popViewController(animated: true)
         
         switch self.diaryEditorMode{
