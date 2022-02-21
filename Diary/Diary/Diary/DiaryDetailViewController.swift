@@ -33,7 +33,6 @@ class DiaryDetailViewController: UIViewController {
     
     @objc func tapStarButton(){
         guard let isStar = self.diary?.isStar else { return }
-        guard let indexPath = self.indexPath else { return }
         if isStar{
             self.starButton?.image = UIImage(systemName: "star")
         }else{
@@ -45,7 +44,7 @@ class DiaryDetailViewController: UIViewController {
             object: [
                 "diary" : self.diary,
                 "isStar":self.diary?.isStar ?? false,
-                "indexPath" : indexPath
+                "uuidString" : diary?.uuidString
                     ],
             userInfo: nil)
     }
@@ -77,16 +76,15 @@ class DiaryDetailViewController: UIViewController {
     
     @objc func editDiaryNotification(_ notification:Notification){
         guard let diary = notification.object as? Diary else {return}
-        guard let row = notification.userInfo?["indexPath.row"] as? Int else{ return }
         self.diary = diary
         self.configureView()
     }
     
     @IBAction func tapDeleteButton(_ sender: UIButton) {
-        guard let indexPath = indexPath else { return }
+        guard let uuidString = self.diary?.uuidString else { return }
         NotificationCenter.default.post(
             name: NSNotification.Name("deleteDiary"),
-            object: indexPath,
+            object: uuidString,
             userInfo: nil)
         self.navigationController?.popViewController(animated: true)
         
