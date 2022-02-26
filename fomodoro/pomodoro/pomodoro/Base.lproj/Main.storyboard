@@ -31,8 +31,8 @@
                             <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="mrL-cG-2Vr">
                                 <rect key="frame" x="48" y="338" width="318" height="4"/>
                             </progressView>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plG-wF-hrW">
-                                <rect key="frame" x="13" y="198" width="381" height="216"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plG-wF-hrW">
+                                <rect key="frame" x="47" y="198" width="320" height="216"/>
                             </datePicker>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="Gm1-R0-9aj">
                                 <rect key="frame" x="24" y="438" width="366" height="31"/>
@@ -59,6 +59,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mrL-cG-2Vr" secondAttribute="trailing" constant="48" id="Kmr-Qs-fkp"/>
                             <constraint firstItem="plG-wF-hrW" firstAttribute="top" secondItem="p8X-ob-y3V" secondAttribute="bottom" constant="30" id="PjH-9R-tUv"/>
                             <constraint firstItem="cnL-UK-9b0" firstAttribute="top" secondItem="p8X-ob-y3V" secondAttribute="bottom" constant="80" id="TwE-TA-hqu"/>
+                            <constraint firstItem="plG-wF-hrW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YU2-9e-ysJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gm1-R0-9aj" secondAttribute="trailing" constant="24" id="b4o-h5-zMi"/>
                             <constraint firstItem="p8X-ob-y3V" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="cIN-kU-DYh"/>
                             <constraint firstItem="mrL-cG-2Vr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="crI-GQ-2d8"/>
