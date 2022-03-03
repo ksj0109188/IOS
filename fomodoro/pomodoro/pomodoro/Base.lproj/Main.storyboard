@@ -77,6 +77,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="XPY-wB-XBV" id="GQ7-ch-ekI"/>
                         <outlet property="datePicker" destination="plG-wF-hrW" id="syB-Ab-Oxv"/>
+                        <outlet property="imageView" destination="p8X-ob-y3V" id="9Wr-R8-BsH"/>
                         <outlet property="progressView" destination="mrL-cG-2Vr" id="f7m-5Q-u2l"/>
                         <outlet property="timerLabel" destination="cnL-UK-9b0" id="858-dZ-lbe"/>
                         <outlet property="toggleButton" destination="hLD-l3-3KD" id="F5P-fg-73X"/>
