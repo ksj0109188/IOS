@@ -51,7 +51,7 @@ class ViewController: UIViewController {
                 let hour = self.currentSeconds / 3600
                 let minutes = (self.currentSeconds % 3600) / 60
                 let seconds = (self.currentSeconds % 3600) % 60
-                self.timerLabel.text = String(format: "%02d:%02d:%02d", hour,seconds,minutes)
+                self.timerLabel.text = String(format: "%02d:%02d:%02d", hour,minutes,seconds)
                 self.progressView.progress = Float(self.currentSeconds) / Float(self.duration)
                 //이미지 180도 회전
                 UIView.animate(withDuration: 0.5, delay: 0,animations: {
