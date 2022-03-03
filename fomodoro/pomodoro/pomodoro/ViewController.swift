@@ -67,8 +67,11 @@ class ViewController: UIViewController {
         }
         self.timerStatus = .end
         self.cancelButton.isEnabled = false
-        self.setTimerInfoViewVisble(isHidden: true)
-        self.datePicker.isHidden = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.timerLabel.alpha = 0
+            self.progressView.alpha = 0
+            self.datePicker.alpha = 1
+        })
         self.toggleButton.isSelected = false
         self.timer?.cancel()
         self.timer = nil
@@ -89,8 +92,11 @@ class ViewController: UIViewController {
         case .end:
             self.currentSeconds = self.duration
             self.timerStatus = .start
-            self.setTimerInfoViewVisble(isHidden: false)
-            self.datePicker.isHidden = true
+            UIView.animate(withDuration: 0.5, animations: {
+                self.timerLabel.alpha = 1
+                self.progressView.alpha = 1
+                self.datePicker.alpha = 0
+            })
             self.toggleButton.isSelected = true
             self.cancelButton.isEnabled = true
             self.startTimer()
