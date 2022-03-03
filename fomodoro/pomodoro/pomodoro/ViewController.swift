@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import AudioToolbox
 enum TimereStatus{
     case start
     case pause
@@ -52,8 +52,9 @@ class ViewController: UIViewController {
                 let seconds = (self.currentSeconds % 3600) % 60
                 self.timerLabel.text = String(format: "%02d:%02d:%02d", hour,seconds,minutes)
                 self.progressView.progress = Float(self.currentSeconds) / Float(self.duration)
-                if self.currentSeconds ?? 0 <= 0{
+                if self.currentSeconds <= 0{
                     self.stopTimer()
+                    AudioServicesPlaySystemSound(1005)
                 }
             })
             self.timer?.resume()
