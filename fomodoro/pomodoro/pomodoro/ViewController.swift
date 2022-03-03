@@ -51,6 +51,7 @@ class ViewController: UIViewController {
                 let minutes = (self.currentSeconds % 3600) / 60
                 let seconds = (self.currentSeconds % 3600) % 60
                 self.timerLabel.text = String(format: "%02d:%02d:%02d", hour,seconds,minutes)
+                self.progressView.progress = Float(self.currentSeconds) / Float(self.duration)
                 if self.currentSeconds ?? 0 <= 0{
                     self.stopTimer()
                 }
