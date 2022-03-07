@@ -92,7 +92,7 @@
                     <connections>
                         <outlet property="newCaseLabel" destination="lKv-mg-TqR" id="I7E-R2-4y3"/>
                         <outlet property="pieChartView" destination="0cq-Aa-kIQ" id="0kY-Qb-AUu"/>
-                        <outlet property="totalCaseLabel" destination="lKv-mg-TqR" id="Loc-gW-GkH"/>
+                        <outlet property="totalCaseLabel" destination="deN-fy-nbG" id="gan-Ob-Phg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -20,12 +20,16 @@ class ViewController: UIViewController {
             guard let self = self else {return}
             switch result {
             case let .success(result):
-                debugPrint("success \(result)")
+                self.configureStackView(koreaCovidOverview: result.korea)
             case let .failure(error):
                 debugPrint("error \(error)")
             }
             
         })
+    }
+    func configureStackView(koreaCovidOverview:CovidOverView){
+        self.totalCaseLabel.text = "\(koreaCovidOverview.totalCase)명"
+        self.newCaseLabel.text = "\(koreaCovidOverview.newCase)명"
     }
 
     func fetchCovidOverview(completionHandler : @escaping (Result<CityCovidOverview, Error>) -> Void){
