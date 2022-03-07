@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0D224927D62B9800F2A075 /* CovidDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D224827D62B9800F2A075 /* CovidDetailViewController.swift */; };
 		3B7BA2A627D4E3C3009B38BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BA2A527D4E3C3009B38BF /* AppDelegate.swift */; };
 		3B7BA2A827D4E3C3009B38BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BA2A727D4E3C3009B38BF /* SceneDelegate.swift */; };
 		3B7BA2AA27D4E3C3009B38BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BA2A927D4E3C3009B38BF /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		25C52EA764EF049790843D0B /* Pods_COVID19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B0D224827D62B9800F2A075 /* CovidDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidDetailViewController.swift; sourceTree = "<group>"; };
 		3B7BA2A227D4E3C3009B38BF /* COVID19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVID19.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B7BA2A527D4E3C3009B38BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B7BA2A727D4E3C3009B38BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				3B7BA2AE27D4E3C4009B38BF /* Assets.xcassets */,
 				3B7BA2B027D4E3C4009B38BF /* LaunchScreen.storyboard */,
 				3B7BA2B327D4E3C4009B38BF /* Info.plist */,
+				3B0D224827D62B9800F2A075 /* CovidDetailViewController.swift */,
 			);
 			path = COVID19;
 			sourceTree = "<group>";
@@ -80,7 +83,6 @@
 				7368BD5E976F113E95606831 /* Pods-COVID19.debug.xcconfig */,
 				FFE596D29B27281E85E169DD /* Pods-COVID19.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B7BA2AA27D4E3C3009B38BF /* ViewController.swift in Sources */,
+				3B0D224927D62B9800F2A075 /* CovidDetailViewController.swift in Sources */,
 				3B7BA2A627D4E3C3009B38BF /* AppDelegate.swift in Sources */,
 				3B7BA2A827D4E3C3009B38BF /* SceneDelegate.swift in Sources */,
 			);

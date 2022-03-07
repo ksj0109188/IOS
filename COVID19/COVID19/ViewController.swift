@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Charts
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -14,6 +14,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBOutlet weak var totalCaseLabel: UILabel!
+    @IBOutlet weak var newCaseLabel: UILabel!
+    @IBOutlet weak var pieChartView: PieChartView!
+    
 }
 
