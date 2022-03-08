@@ -27,6 +27,26 @@ class ViewController: UIViewController {
             
         })
     }
+    
+    func makeCovidOverviewList(cityCovidOverview:CityCovidOverview) -> [CovidOverView]{
+        return [
+            cityCovidOverview.seoul,
+            cityCovidOverview.busan,
+            cityCovidOverview.daegu,
+            cityCovidOverview.incheon,
+            cityCovidOverview.gwangju,
+            cityCovidOverview.daejeon,
+            cityCovidOverview.ulsan,
+            cityCovidOverview.sejong,
+            cityCovidOverview.gyeonggi,
+            cityCovidOverview.chungbuk,
+            cityCovidOverview.chungnam,
+            cityCovidOverview.gyeongbuk,
+            cityCovidOverview.gyeongnam,
+            cityCovidOverview.jeju,
+        ]
+    }
+    
     func configureStackView(koreaCovidOverview:CovidOverView){
         self.totalCaseLabel.text = "\(koreaCovidOverview.totalCase)명"
         self.newCaseLabel.text = "\(koreaCovidOverview.newCase)명"
@@ -54,4 +74,3 @@ class ViewController: UIViewController {
         })
     }
 }
-
