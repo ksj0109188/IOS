@@ -21,6 +21,8 @@ class ViewController: UIViewController {
             switch result {
             case let .success(result):
                 self.configureStackView(koreaCovidOverview: result.korea)
+                let covidOverviewList = self.makeCovidOverviewList(cityCovidOverview: result)
+                self.configureChartView(covidOverviewList: covidOverviewList)
             case let .failure(error):
                 debugPrint("error \(error)")
             }
@@ -45,6 +47,25 @@ class ViewController: UIViewController {
             cityCovidOverview.gyeongnam,
             cityCovidOverview.jeju,
         ]
+    }
+    
+    func configureChartView(covidOverviewList:[CovidOverView]){
+        let entries = covidOverviewList.compactMap{ [weak self] covidoverview -> PieChartDataEntry? in
+            guard let self = self else { return nil }
+            return PieChartDataEntry(
+                value: self.removeForamtString(string:covidoverview.newCase),
+                label: covidoverview.countryName,
+                data: covidoverview
+            )
+        }
+        let dataSet = PieChartDataSet(entries: entries, label: "코로나 발생 현황")
+        self.pieChartView.data = PieChartData(dataSet: dataSet)
+    }
+    
+    func removeForamtString(string : String) -> Double{
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter.number(from: string)?.doubleValue ?? 0
     }
     
     func configureStackView(koreaCovidOverview:CovidOverView){
