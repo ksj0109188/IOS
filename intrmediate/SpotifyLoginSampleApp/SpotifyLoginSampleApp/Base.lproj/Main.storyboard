@@ -188,12 +188,11 @@
                                     <constraint firstAttribute="height" constant="60" id="ZS0-1I-c75"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <buttonConfiguration key="configuration" style="plain" title="Next">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="nextButton:" destination="QJf-ey-JL7" eventType="touchUpInside" id="4j5-Aa-3G6"/>
-                                    <action selector="nextButtonTapped:" destination="QJf-ey-JL7" eventType="touchUpInside" id="8fN-oz-ucU"/>
+                                    <action selector="nextButtonTapped:" destination="QJf-ey-JL7" eventType="touchUpInside" id="Hnp-bd-Vlh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -211,7 +210,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="TVu-9u-Zij" id="1sC-i9-6GF"/>
                         <outlet property="errorMessageLabel" destination="hDy-39-d7L" id="d32-29-Rdp"/>
-                        <outlet property="nextButton" destination="Ngc-Uk-46E" id="EoD-4W-gh9"/>
+                        <outlet property="nextButton" destination="Ngc-Uk-46E" id="vKU-S1-68x"/>
                         <outlet property="passwordTextField" destination="TVu-9u-Zij" id="MSh-2r-3pK"/>
                     </connections>
                 </viewController>
