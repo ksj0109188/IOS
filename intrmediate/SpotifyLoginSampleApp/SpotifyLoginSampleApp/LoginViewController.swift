@@ -70,7 +70,7 @@ class LoginViewController : UIViewController{
     }
    
     @IBAction func appleLoginButtonTapped(_ sender: UIButton) {
-        //firebase인증
+        //Apple Develpoer 등록후 구현예정
     }
     
 }
