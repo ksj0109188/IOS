@@ -233,7 +233,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOu-5h-HBF">
-                                <rect key="frame" x="160.5" y="488" width="93.5" height="38"/>
+                                <rect key="frame" x="160.5" y="539" width="93.5" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="로그아웃">
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
@@ -243,17 +243,30 @@
                                     <action selector="logoutButtonTapped:" destination="7Mh-tz-NDM" eventType="touchUpInside" id="uIe-4x-DUJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOK-m2-6Li">
+                                <rect key="frame" x="157" y="488" width="100.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="비밀번호 변경">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="restPasswordButtonTapeed:" destination="7Mh-tz-NDM" eventType="touchUpInside" id="eQr-VH-dGg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jqs-mv-tL1"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jOu-5h-HBF" firstAttribute="centerX" secondItem="jqs-mv-tL1" secondAttribute="centerX" id="FGj-yz-Pn7"/>
                             <constraint firstItem="cYa-u3-O6m" firstAttribute="centerX" secondItem="jqs-mv-tL1" secondAttribute="centerX" id="UiH-yM-DG5"/>
+                            <constraint firstItem="jOu-5h-HBF" firstAttribute="top" secondItem="SOK-m2-6Li" secondAttribute="bottom" constant="20" id="e54-9I-YUB"/>
                             <constraint firstItem="cYa-u3-O6m" firstAttribute="centerY" secondItem="jqs-mv-tL1" secondAttribute="centerY" id="jqq-Ts-izS"/>
-                            <constraint firstItem="jOu-5h-HBF" firstAttribute="top" secondItem="cYa-u3-O6m" secondAttribute="bottom" constant="20" id="sOT-1X-ZOT"/>
+                            <constraint firstItem="SOK-m2-6Li" firstAttribute="top" secondItem="cYa-u3-O6m" secondAttribute="bottom" constant="20" id="kLw-89-Hmp"/>
+                            <constraint firstItem="SOK-m2-6Li" firstAttribute="centerX" secondItem="jqs-mv-tL1" secondAttribute="centerX" id="uLF-RZ-nnw"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="resetPasswordButton" destination="SOK-m2-6Li" id="wP3-pa-FVk"/>
                         <outlet property="welcomLabel" destination="cYa-u3-O6m" id="dEg-Hp-Zxt"/>
                     </connections>
                 </viewController>
