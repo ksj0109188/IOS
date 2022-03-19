@@ -8,3 +8,4 @@ intrmediate/SpotifyLoginSampleApp/SpotifyLoginSampleApp/GoogleService-Info.plist
 
 intrmediate/SpotifyLoginSampleApp/Podfile.lock
 intrmediate/SpotifyLoginSampleApp/Pods/Manifest.lock
+*.lock
