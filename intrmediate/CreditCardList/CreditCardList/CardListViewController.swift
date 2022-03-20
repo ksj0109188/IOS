@@ -79,13 +79,39 @@ class CardListViewController: UITableViewController{
         //option2 -> 특정 객체의 고유값 ex) id를 활용
         //realtime database에 저장된 json객체중 key값이 id인 것을 검색
         
-        ref.queryOrdered(byChild: "id").queryEqual(toValue: cardId).observe(.value) {[weak self] snapshot
-            in
-            guard let self = self,
-                  let value = snapshot.value as? [String : [String : Any]],
-                  // id를 기준으로 검색하고 해당 객체의 key값 또한 id와 동일
-                  let key = value.keys.first else { return }
-            self.ref.child("\(key)/isSelected").setValue(true)
+//        ref.queryOrdered(byChild: "id").queryEqual(toValue: cardId).observe(.value) {[weak self] snapshot
+//            in
+//            guard let self = self,
+//                  let value = snapshot.value as? [String : [String : Any]],
+//                  // id를 기준으로 검색하고 해당 객체의 key값 또한 id와 동일
+//                  let key = value.keys.first else { return }
+//            self.ref.child("\(key)/isSelected").setValue(true)
+//        }
+    }
+    //table cell에 swipe제스처 기능 추가
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        
+        if editingStyle == .delete{
+            //option 1
+            //key값을 유추할 수 있을때
+            let cardId = creditCardList[indexPath.row].id
+//            ref.child("Item\(cardId)").removeValue()
+
+            //option 2
+            //특정 value로 key값을 유추할 때
+            ref.queryOrdered(byChild: "id").queryEqual(toValue: cardId).observe(.value) {[weak self] snapshot
+                in
+                guard let self = self,
+                      let value = snapshot.value as? [String : [String : Any]],
+                      // id를 기준으로 검색하고 해당 객체의 key값 또한 id와 동일
+                      let key = value.keys.first else { return }
+                self.ref.child(key).removeValue()
+            }
         }
     }
 }
