@@ -5,3 +5,6 @@ Calculator/Calculator/Calculator.xcodeproj/project.xcworkspace/xcuserdata/kim.xc
 *.xcbkptlist
 *.pbxproj
 intrmediate/SpotifyLoginSampleApp/SpotifyLoginSampleApp/GoogleService-Info.plist
+*.plist
+*.plist
+intrmediate/CreditCardList/CreditCardList.xcodeproj/xcuserdata/kim.xcuserdatad/xcschemes/xcschememanagement.plist
