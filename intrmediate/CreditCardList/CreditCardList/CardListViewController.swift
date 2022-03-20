@@ -33,4 +33,6 @@ class CardListViewController: UITableViewController{
         return cell
         
     }
+    
+    
 }
