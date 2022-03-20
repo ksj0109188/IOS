@@ -71,9 +71,21 @@ class CardListViewController: UITableViewController{
         
         detailViewController.promotionDetail = creditCardList[indexPath.row].promotionDetail
         self.show(detailViewController, sender: nil)
-     
+        
+        //option1 -> 불특정 시점에 cardId가 중복될수 있는 이슈가 발생함. -> critical
         let cardId = creditCardList[indexPath.row].id
         ref.child("Item\(cardId)/isSelected").setValue(true)
+        
+        //option2 -> 특정 객체의 고유값 ex) id를 활용
+        //realtime database에 저장된 json객체중 key값이 id인 것을 검색
+        
+        ref.queryOrdered(byChild: "id").queryEqual(toValue: cardId).observe(.value) {[weak self] snapshot
+            in
+            guard let self = self,
+                  let value = snapshot.value as? [String : [String : Any]],
+                  // id를 기준으로 검색하고 해당 객체의 key값 또한 id와 동일
+                  let key = value.keys.first else { return }
+            self.ref.child("\(key)/isSelected").setValue(true)
+        }
     }
-    
 }
