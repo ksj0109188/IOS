@@ -71,7 +71,9 @@ class CardListViewController: UITableViewController{
         
         detailViewController.promotionDetail = creditCardList[indexPath.row].promotionDetail
         self.show(detailViewController, sender: nil)
-        
+     
+        let cardId = creditCardList[indexPath.row].id
+        ref.child("Item\(cardId)/isSelected").setValue(true)
     }
     
 }
