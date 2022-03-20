@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import Kingfisher
 class CardListViewController: UITableViewController{
     var creditCardList : [CreditCard] = []
     
@@ -30,9 +30,14 @@ class CardListViewController: UITableViewController{
         cell.rankLabell.text = "\(creditCardList[indexPath.row].rank)위"
         cell.promotionLabel.text = "\(creditCardList[indexPath.row].promotionDetail.amount)만원 증정"
         cell.cardNameLabel.text = "\(creditCardList[indexPath.row].name)"
+        
+        let imageURL = URL(string: creditCardList[indexPath.row].cardImageURL)
+        cell.cardImageView.kf.setImage(with: imageURL)
+        
         return cell
         
     }
+    
     
     
 }
