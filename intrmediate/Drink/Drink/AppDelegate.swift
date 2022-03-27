@@ -17,13 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
         
-        let authrizationOptions = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
-        userNotificationCenter?.requestAuthorization(options: authrizationOptions){success, error in
-            if let error = error{
-                print("ERROR: notification authrization request \(error.localizedDescription)")
-            }
-        }
-        
         return true
     }
 
