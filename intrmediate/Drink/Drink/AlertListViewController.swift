@@ -42,14 +42,6 @@ class AlertListViewController:UITableViewController{
         super.viewDidLoad()
         let nibName = UINib(nibName: "alertListCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "alertListCell")
-        
-        let authrizationOptions = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
-        notificationCenter.requestAuthorization(options: authrizationOptions){success, error in
-            if let error = error{
-                print("ERROR: notification authrization request \(error.localizedDescription)")
-            }
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
