@@ -14,7 +14,7 @@ class ContentCollectionViewHeader : UICollectionReusableView{
         super.layoutSubviews()
         
         sectionNameLabel.font = .systemFont(ofSize: 17,weight:.bold)
-        sectionNameLabel.textColor = .white
+        sectionNameLabel.textColor = .black
         sectionNameLabel.sizeToFit()
         
         addSubview(sectionNameLabel)
