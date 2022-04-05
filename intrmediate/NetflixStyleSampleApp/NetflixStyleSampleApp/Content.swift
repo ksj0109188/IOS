@@ -8,11 +8,11 @@
 import UIKit
 
 struct Content : Decodable {
-    let seciontType : SecionType
+    let sectionType : SectionType
     let sectionName : String
     let contentItem : [Item]
     
-    enum SecionType:String, Decodable{
+    enum SectionType:String, Decodable{
         case basic
         case main
         case large
