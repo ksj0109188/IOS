@@ -95,7 +95,7 @@ class ContentCollectionViewMainCell : UICollectionViewCell{
             $0.titleLabel?.font = .systemFont(ofSize: 13)
             $0.setTitleColor(.white, for: .normal)
             $0.imageView?.tintColor = .white
-//            $0.adjustVerticalLayout(5)
+            $0.adjustVerticalLayout(5)
         }
         
         plusButton.setTitle("내가 찜한 콘텐츠", for: .normal)
@@ -118,7 +118,7 @@ class ContentCollectionViewMainCell : UICollectionViewCell{
         }
         playButton.addTarget(self, action: #selector(ButtonTapped), for: .touchUpInside)
         
-        [plusButton,infoButton, playButton].forEach{
+        [plusButton, playButton,infoButton].forEach{
             contentStackView.addArrangedSubview($0)
         }
         
@@ -126,6 +126,7 @@ class ContentCollectionViewMainCell : UICollectionViewCell{
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(60)
         }
+        
     }
     
     @objc func ButtonTapped(sender:UIButton!){
