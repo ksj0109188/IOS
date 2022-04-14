@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct MyView: View {
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack{
+            Text("Hello, World!")
+            Text("만나서 반가워요")
+        }
     }
 }
 
