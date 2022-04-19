@@ -205,6 +205,10 @@ extension HomeViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let isFirstSection = indexPath.section == 0
         let selectedItem = isFirstSection ? mainItem : contents[indexPath.section].contentItem[indexPath.row]
+        let contentDetailView = ContentDetailView(item: selectedItem)
+        //UIController 연결
+        let hostingVC = UIHostingController(rootView: contentDetailView)
+        self.show(hostingVC, sender: nil)
     }
     
 }
