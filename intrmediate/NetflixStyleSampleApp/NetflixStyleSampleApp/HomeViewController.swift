@@ -222,6 +222,7 @@ struct HomeViewController_Previews:PreviewProvider{
     
     
 }
+
 struct HomeViewControllerRepresentable:UIViewControllerRepresentable{
     func makeUIViewController(context: Context) ->  UIViewController {
         let layout = UICollectionViewLayout()
