@@ -19,7 +19,8 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection:$selection){
-            Color.white.tabItem{
+            AssetView()
+                .tabItem{
                 Image(systemName: "dollarsign.circle.fill")
                 Text("자산")
             }.tag(Tab.asset)
