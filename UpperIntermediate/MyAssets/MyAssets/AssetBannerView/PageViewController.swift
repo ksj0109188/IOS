@@ -28,8 +28,8 @@ struct PageViewController<Page:View>: UIViewControllerRepresentable {
         return pageViewController
     }
     
-    func updateUIViewController(_ pageeViewController: UIPageViewController, context: Context) {
-        PageViewController.setViewControllers(
+    func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
+        pageViewController.setViewControllers(
             [context.coordinator.controllers[currentPage]],
             direction: .forward,
             animated: true
@@ -69,7 +69,6 @@ struct PageViewController<Page:View>: UIViewControllerRepresentable {
                let visibleViewController = pageViewController.viewControllers?.first,
                let index = controllers.firstIndex(of: visibleViewController){
                 parent.currentPage = index
-                
             }
         }
     }
