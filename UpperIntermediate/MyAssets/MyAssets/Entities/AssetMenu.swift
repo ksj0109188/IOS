@@ -8,12 +8,12 @@
 import Foundation
 
 enum AssetMenu:String, Identifiable, Decodable{
-    case creditscore
+    case creditScore
     case bankAccount
     case investment
     case loan
     case insurance
-    case creditcard
+    case creditCard
     case cash
     case realEstate
     
@@ -23,7 +23,7 @@ enum AssetMenu:String, Identifiable, Decodable{
     
     var systemImageName: String{
         switch self{
-        case .creditscore:
+        case .creditScore:
             return "number.circle"
         case .bankAccount:
             return "banknote"
@@ -37,14 +37,14 @@ enum AssetMenu:String, Identifiable, Decodable{
             return "dollarsign.circle"
         case .realEstate:
             return "house.fill"
-        case .creditcard:
+        case .creditCard:
             return "creditcard"
         }
     }
     
     var title:String{
         switch self{
-        case .creditscore:
+        case .creditScore:
             return "신용점수"
         case .bankAccount:
             return "계좌"
@@ -54,7 +54,7 @@ enum AssetMenu:String, Identifiable, Decodable{
             return "대출"
         case .cash:
             return "현금영수증"
-        case .creditcard:
+        case .creditCard:
             return "카드"
         case .insurance:
             return "보험"

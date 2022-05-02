@@ -11,9 +11,16 @@ struct AssetSectionView: View {
     @ObservedObject var assetSection: Asset
     var body: some View {
         VStack(spacing:20){
-            AssetSectionHeaderView(title: assetSection)
-        }
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            AssetSectionHeaderView(title: assetSection.type.title)
+            ForEach(assetSection.data) { asset in
+                HStack{
+                    Text(asset.title).font(.title).foregroundColor(.secondary)
+                    Spacer()
+                    Text(asset.amount).font(.title2).foregroundColor(.primary)
+                }
+                Divider()
+            }
+        }.padding()
     }
 }
 

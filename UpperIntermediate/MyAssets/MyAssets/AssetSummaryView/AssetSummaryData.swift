@@ -11,7 +11,7 @@ class AssetSummaryData: ObservableObject {
     @Published var asseets:[Asset] = load("assets.json")
 }
 
-func load<T:Decodable>(_ filename:String) -> T{
+func load<T : Decodable>(_ filename:String) -> T{
     let data: Data
     
     guard let file = Bundle.main.url(forResource: filename, withExtension:nil) else {
@@ -20,7 +20,7 @@ func load<T:Decodable>(_ filename:String) -> T{
     
     do {
         data = try Data(contentsOf: file)
-    } catch{
+    }catch{
         fatalError(filename + "을 찾지 못함")
     }
     

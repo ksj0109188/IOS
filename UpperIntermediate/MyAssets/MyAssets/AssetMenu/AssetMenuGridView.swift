@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AssetMenuGridView: View {
     let menuList : [[AssetMenu]] = [
-        [.creditscore, .bankAccount, .investment, .loan],        [.insurance, .creditcard, .cash, .realEstate]
+        [.creditScore, .bankAccount, .investment, .loan],        [.insurance, .creditCard, .cash, .realEstate]
     ]
     var body: some View {
         VStack(spacing:20){

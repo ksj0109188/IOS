@@ -29,13 +29,13 @@ struct AssetMenuButtonStyle_Previews: PreviewProvider {
         HStack(spacing:24){
             Button(""){
                 print("")
-            }.buttonStyle(AssetMenuButtonStyle(menu: .creditscore))
+            }.buttonStyle(AssetMenuButtonStyle(menu: .creditScore))
             Button(""){
                 print("")
             }.buttonStyle(AssetMenuButtonStyle(menu: .bankAccount))
             Button(""){
                 print("")
-            }.buttonStyle(AssetMenuButtonStyle(menu: .creditcard))
+            }.buttonStyle(AssetMenuButtonStyle(menu: .creditScore))
             Button(""){
                 print("")
             }.buttonStyle(AssetMenuButtonStyle(menu: .cash))
