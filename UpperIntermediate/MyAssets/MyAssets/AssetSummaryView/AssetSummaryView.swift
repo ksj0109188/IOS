@@ -13,10 +13,15 @@ struct AssetSummaryView: View {
     var assets:[Asset]{
         return assetData.asseets
     }
+    
     var body: some View {
         VStack(spacing:20){
-            ForEach(assets){ assets in
-                AssetSectionView(assetSection: assets)
+            ForEach(assets){ asset in
+                switch asset.type{
+                case .creditCard: AssetCardSectionView(asset: asset).frame(idealHeight:250)
+                default : AssetSectionView(assetSection: asset)
+                }
+                
             }.background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding()

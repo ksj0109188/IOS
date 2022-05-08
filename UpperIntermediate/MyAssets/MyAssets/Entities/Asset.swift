@@ -24,8 +24,8 @@ class AssetData : Identifiable, ObservableObject, Decodable{
     let id : Int
     let title : String
     let amount : String
-    let creditCardAmounts: [CreditCardAmounts]
-    init(id: Int, title:String, amount:String, creditCardAmounts:[CreditCardAmounts]){
+    let creditCardAmounts: [CreditCardAmounts]?
+    init(id: Int, title:String, amount:String, creditCardAmounts:[CreditCardAmounts]? = nil){
         self.id = id
         self.title = title
         self.amount = amount
