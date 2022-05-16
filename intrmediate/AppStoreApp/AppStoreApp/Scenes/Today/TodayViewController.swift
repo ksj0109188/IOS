@@ -16,7 +16,12 @@ final class TodayViewController:UIViewController {
         collectionView.dataSource = self
         
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(TodayCollectionViewCell.self, forCellWithReuseIdentifier: "todayCell")
+        collectionView.register(TodayCollectionViewCell.self,
+                                forCellWithReuseIdentifier: "todayCell")
+        collectionView.register(
+            TodayCollectionHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: "TodayCollectionHeaderView")
         
         return collectionView
     }()
@@ -44,6 +49,19 @@ extension TodayViewController:UICollectionViewDataSource{
         
         return cell ?? UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView { // header, footer 를 만들때 호출됨
+        guard kind == UICollectionView.elementKindSectionHeader, //filtering
+              let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "TodayCollectionHeaderView",
+                for: indexPath) as? TodayCollectionHeaderView
+        else { return UICollectionReusableView() }
+        header.setupViews()
+        
+        return header
+    }
+    
 }
 
 extension TodayViewController : UICollectionViewDelegateFlowLayout{
@@ -51,4 +69,14 @@ extension TodayViewController : UICollectionViewDelegateFlowLayout{
         let width = collectionView.frame.width - 32.0
         return CGSize(width: width, height: width)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: collectionview.frame.width - 32.0, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let value: CGFloat = 16.0
+        return UIEdgeInsets(top: value, left: value, bottom: value, right: value)
+    }
+        
 }
