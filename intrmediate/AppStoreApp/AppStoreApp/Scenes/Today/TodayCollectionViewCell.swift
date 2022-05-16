@@ -45,9 +45,14 @@ final class TodayCollectionViewCell: UICollectionViewCell{
     }()
     
     func setup(){
-        backgroundColor = .yellow
+        setupSubViews()
+        
+        subTitleLabel.text = "서브타이틀"
+        descriptionLabel.text = "설명"
+        titleLabel.text = "앱의 이름"
     }
 }
+
 
 private extension TodayCollectionViewCell {
     func setupSubViews(){
@@ -75,6 +80,5 @@ private extension TodayCollectionViewCell {
             $0.edges.equalToSuperview()
     
         }
-        
     }
 }
