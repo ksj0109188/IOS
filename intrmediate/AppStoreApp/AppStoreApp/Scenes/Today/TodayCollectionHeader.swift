@@ -40,8 +40,8 @@ final class TodayCollectionHeaderView: UICollectionReusableView{
         
         titleLabel.snp.makeConstraints{
             $0.left.equalTo(dateLabel)
-            $0.top.equalTo(dateLabel).offset(8.0)
-//            $0.top.equalTo(dateLabel.snp.bottom).offset(8.0)
+//            $0.top.equalTo(dateLabel).offset(8.0) //bottom기준이 아님
+            $0.top.equalTo(dateLabel.snp.bottom).offset(8.0) //bottom기준
         }
     }
 }

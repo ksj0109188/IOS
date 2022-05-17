@@ -16,7 +16,7 @@ class TabBarController: UITabBarController {
     }()
     
     private lazy var appViewController: UIViewController = {
-        let viewController = UIViewController()
+        let viewController = UINavigationController(rootViewController: AppViewController())
         let tabBarItem = UITabBarItem(title: "앱", image: UIImage(systemName: "square.stack.3d.up"), tag: 1)
         viewController.tabBarItem = tabBarItem
         return viewController
@@ -25,7 +25,6 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .red
         
         viewControllers = [todayViewController,appViewController]
     }
