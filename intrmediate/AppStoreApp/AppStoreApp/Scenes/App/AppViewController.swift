@@ -20,10 +20,10 @@ final class AppViewController: UIViewController{
         stackView.spacing = 0.0 // 간격 0.0을 지정하면 stackView의 subview 높이에 따라 StackView의 높이가 결정됨.
        
         let featureSectionView = FeatureSectionView(frame: .zero)
-        let rankingFeautreSection = UIView()
+        let rankingFeautreSection = RankingFeatureSectionView(frame: .zero)
         let exchangeCodeButtonView = UIView()
         
-        rankingFeautreSection.backgroundColor = .yellow
+        
         exchangeCodeButtonView.backgroundColor = .green
         
         [featureSectionView,
