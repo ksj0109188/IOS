@@ -21,14 +21,17 @@ final class AppViewController: UIViewController{
        
         let featureSectionView = FeatureSectionView(frame: .zero)
         let rankingFeautreSection = RankingFeatureSectionView(frame: .zero)
-        let exchangeCodeButtonView = UIView()
+        let exchangeCodeButtonView = ExchangeCodeButtonView(frame: .zero)
         
-        
-        exchangeCodeButtonView.backgroundColor = .green
+        let spacingView = UIView()
+        spacingView.snp.makeConstraints{
+            $0.height.equalTo(100.0)
+        }
         
         [featureSectionView,
          rankingFeautreSection,
-         exchangeCodeButtonView
+         exchangeCodeButtonView,
+         spacingView
         ].forEach{
             stackView.addArrangedSubview($0)
         }
@@ -65,7 +68,7 @@ private extension AppViewController{
             $0.edges.equalToSuperview() // superView -> scrollView
             $0.width.equalToSuperview()
         }
-        
+
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints{
             $0.edges.equalToSuperview()
