@@ -9,6 +9,7 @@ import SnapKit
 import UIKit
 
 final class AppDetailViewController : UIViewController{
+    private let today : Today
     private let appIconImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -57,10 +58,19 @@ final class AppDetailViewController : UIViewController{
         
         setViews()
         appIconImageView.backgroundColor = .lightGray
-        titleLabel.text = "title"
-        subTitleLabel.text = "sub title"
+        titleLabel.text = today.title
+        subTitleLabel.text = today.subTitle
     }
     
+    init(today : Today){
+        self.today = today
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 // MARK: SET_AutoLayout
 private extension AppDetailViewController {
