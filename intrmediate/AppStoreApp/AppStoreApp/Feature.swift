@@ -8,8 +8,9 @@
 import Foundation
 
 struct Feature: Decodable {
-    let title: String
-    let subTitle: String
+    let type: String
+    let appName: String
     let description: String
     let imageURL: String
+    
 }
