@@ -9,6 +9,17 @@ import SnapKit
 import UIKit
 
 final class StationDetailViewController : UIViewController {
+    private lazy var refreshControl:UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
+        return refreshControl
+    }()
+    
+    @objc func fetchData(){
+        print("REFRESH!")
+        refreshControl.endRefreshing()
+    }
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = CGSize(
@@ -20,8 +31,9 @@ final class StationDetailViewController : UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "StationDetailCollectionViewCell")
+        collectionView.register(StationDetailCollectionViewCell.self, forCellWithReuseIdentifier: "StationDetailCollectionViewCell")
         collectionView.dataSource = self
+        collectionView.refreshControl = refreshControl
         return collectionView
     }()
     
@@ -42,11 +54,11 @@ extension StationDetailViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StationDetailCollectionViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StationDetailCollectionViewCell", for: indexPath) as? StationDetailCollectionViewCell
         
-        cell.backgroundColor = .gray
+        cell?.setup()
         
-        return cell
+        return cell ?? UICollectionViewCell()
     }
     
     
