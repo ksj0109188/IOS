@@ -45,13 +45,14 @@ final class StationDetailViewController : UIViewController {
     }
     
     @objc private func fetchData(){
-//        refreshControl.endRefreshing()
+
         let stationName = "서울역"
         let urlString :String = "http://swopenapi.seoul.go.kr/api/subway/sample/json/realtimeStationArrival/0/5/\(stationName.replacingOccurrences(of: "역", with: ""))"
         
         AF
             .request(urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
-            .responseDecodable(of: StationArrivalDataResponseModel.self) { response in
+            .responseDecodable(of: StationArrivalDataResponseModel.self) { [weak self] response in
+                self?.refreshControl.endRefreshing()
                 guard case .success(let data) = response.result else { return }
                 print(data.realtimeArrivalList)
             }
