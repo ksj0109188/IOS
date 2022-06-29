@@ -8,7 +8,7 @@
 import Foundation
 
 struct StationArrivalDataResponseModel: Decodable {
-    var realtimeStationArrival : [RealTimeArrival] = []
+    var realtimeArrivalList : [RealTimeArrival] = []
     
     struct RealTimeArrival : Decodable{
         
@@ -17,7 +17,7 @@ struct StationArrivalDataResponseModel: Decodable {
         let currentStation: String
         
         enum CodingKeys: String, CodingKey{
-            case line = "trainLinNm"
+            case line = "trainLineNm"
             case remainTime = "arvlMsg2"
             case currentStation = "arvlMsg3"
         }
