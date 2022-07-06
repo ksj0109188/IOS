@@ -59,7 +59,8 @@ class StationSearchViewController: UIViewController {
 }
 extension StationSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = StationDetailViewController()
+        let station = stations[indexPath.row]
+        let vc = StationDetailViewController(station: station)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -71,11 +72,14 @@ extension StationSearchViewController : UISearchBarDelegate {
         tableView.isHidden = false
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        tableView.isHidden = true
-        stations = []
+        
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         requestStationName(from: searchText)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        tableView.isHidden = true
+        stations = []
     }
 }
 
