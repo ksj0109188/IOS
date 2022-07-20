@@ -1,5 +1,5 @@
 import RxSwift
-
+import Foundation
 let disposeBag = DisposeBag()
 
 enum TraitError:Error {
@@ -101,6 +101,7 @@ func decode(json:String) -> Single<SomeJSON>{
 
 decode(json: json1).subscribe(
     onSuccess: {
+        print($0.name)
         print($0)
     },
     onFailure: {
@@ -110,4 +111,60 @@ decode(json: json1).subscribe(
         print("Disposed")
     })
 
+decode(json: json2)
+    .subscribe{ $0
+        switch $0{
+        case .success(let json):
+            print($0)
+        case .failure(let error):
+            print(error)
+        }
+}
+.disposed(by: disposeBag)
 
+print("-------Maybe1-------")
+Maybe<String>.just("✅")
+    .subscribe(
+        onSuccess: {
+            print($0)
+        }, onError: {
+            print($0)
+        }, onCompleted: {
+            print("completed")
+        }, onDisposed: {
+            print("disposed")
+        })
+    .disposed(by: disposeBag)
+
+print("-------Maybe2-------")
+Observable<String>.create { observable -> Disposable in
+    observable.onError(TraitError.maybe)
+    return Disposables.create()
+}.asMaybe()
+    .subscribe(
+        onSuccess: {
+            print("성공 \($0)")
+        }, onError: {
+            print("에러 \($0)")
+        }, onCompleted: {
+            print("completed")
+        }, onDisposed: {
+            print("disposed")
+        })
+    .disposed(by: disposeBag)
+
+print("-------Completable-------")
+Completable.create { observer -> Disposable in
+    observer(.error(TraitError.completable))
+    return Disposables.create()
+}.subscribe(
+    onCompleted:{
+        print("completed")
+    }
+    , onError:{
+        print("에러 : \($0)")
+    }
+    , onDisposed:{
+        
+    }
+)
