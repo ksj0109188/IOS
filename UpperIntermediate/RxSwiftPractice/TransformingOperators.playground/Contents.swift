@@ -137,7 +137,7 @@ input
     .skip(while: {
         $0 != 0 //만족하면 계속 skip
     })
-    .take(11){}
+    .take(11)
     .toArray()
     .map{
         $0.map{ "\($0)" }
