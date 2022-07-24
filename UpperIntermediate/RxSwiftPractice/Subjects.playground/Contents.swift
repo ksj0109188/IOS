@@ -52,7 +52,7 @@ behaviorSubject.subscribe{
     
 }.disposed(by: disposeBag)
 
-behaviorSubject.onError(SubjectError.error1)
+//behaviorSubject.onError(SubjectError.error1)
 
 behaviorSubject.subscribe{
     print("두번째 구독",$0.element ?? $0)
