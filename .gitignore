@@ -9,3 +9,4 @@ intrmediate/SpotifyLoginSampleApp/SpotifyLoginSampleApp/GoogleService-Info.plist
 *.plist
 intrmediate/CreditCardList/CreditCardList.xcodeproj/xcuserdata/kim.xcuserdatad/xcschemes/xcschememanagement.plist
 *.jpg
+*.xcscheme
