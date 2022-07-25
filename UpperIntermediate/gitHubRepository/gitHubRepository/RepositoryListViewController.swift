@@ -69,7 +69,7 @@ class RepositoryListViewController: UITableViewController {
                     guard let id = dic["id"] as? Int,
                           let name = dic["name"] as? String,
                           let desciprtion = dic["description"] as? String,
-                          let stargazersCount = dic["stargazersCount"] as? Int,
+                          let stargazersCount = dic["stargazers_count"] as? Int,
                           let language = dic["language"] as? String else{
                         return nil
                     }
