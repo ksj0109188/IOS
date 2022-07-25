@@ -30,6 +30,7 @@ class RepositroyListCell: UITableViewCell{
         
         guard let repository = repository else {return }
         nameLabel.text = repository.name
+        nameLabel.textColor = .black
         nameLabel.font = .systemFont(ofSize: 15, weight: .bold)
         
         descriptionLabel.text = repository.description
