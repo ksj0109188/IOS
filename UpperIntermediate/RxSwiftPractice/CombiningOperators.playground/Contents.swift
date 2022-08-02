@@ -99,3 +99,37 @@ let 성명 = Observable.combineLatest(성,이름){ 성, 이름 in
 성.onNext("이")
 성.onNext("조")
 
+print("-------------CombineLatest2-------------")
+let 날짜형식 = Observable<DateFormatter.Style>.of(.short, .long)
+let 날짜 = Observable<Date>.of(Date())
+
+Observable.combineLatest(
+    날짜형식,
+    날짜,
+    resultSelector: { 형식, 날짜 -> String in
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = 형식
+        return dateFormatter.string(from: 날짜)
+    }
+)
+.subscribe(onNext: {
+    print($0)
+})
+.disposed(by: disposeBag)
+
+print("-------------CombineLatest3-------------")
+let lastName = PublishSubject<String>()
+let firstName = PublishSubject<String>()
+
+let fullName = Observable.combineLatest([lastName, firstName]){ name in
+    name.joined(separator: " ")
+}
+
+fullName.subscribe(onNext: {
+    print($0)
+}).disposed(by: disposeBag)
+
+lastName.onNext("김")
+firstName.onNext("성준")
+firstName.onNext("스텔라")
+firstName.onNext("초이")
