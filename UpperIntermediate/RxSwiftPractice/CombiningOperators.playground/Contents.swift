@@ -153,4 +153,114 @@ let 시합결과 = Observable.zip(승부, 선수) { 결과, 대표선수 in
     print($0)
 }).disposed(by: disposeBag)
 
+print("-------------withLatestForm1-------------")
+//특정 트리거(ex) onNext)가 발생하면 조합시키는 Operator
+let 🚀 = PublishSubject<String>()
+let 달리기선수 = PublishSubject<String>()
+
+🚀.withLatestFrom(달리기선수) // 🚀옵저버블이 발생했을때, 달리기선수 옵저버블 이벤트가 발생됨
+                            // 달리기선수의 최신 이벤트가 발생됨.
+//    .distinctUntilChanged() //동일한 이벤트는 걸러줘서 withLatestFrom는 sample operator과 동일하게 작동됨
+    .subscribe(onNext: {
+        print($0)
+    }).disposed(by: disposeBag)
+
+달리기선수.onNext("🏃‍♀️")
+달리기선수.onNext("🏃‍♀️ 🏃🏼‍♂️")
+달리기선수.onNext("123")
+
+🚀.onNext("시작")
+🚀.onNext("시작")
+
+print("-------------sample-------------")
+//withLatestFrom과 비슷 하지만, 한 번만 발생하는 Operator 트리거이다.
+let 출발 = PublishSubject<Void>()
+let F1선수 = PublishSubject<String>()
+
+F1선수
+    .sample(출발)
+    .subscribe(onNext: {
+        print($0)
+    })
+    .disposed(by: disposeBag)
+
+
+F1선수.onNext("빨간차")
+F1선수.onNext("빨간차 뒤에 노란차")
+F1선수.onNext("빨간차 뒤에 노란차 뒤에 흰색차")
+
+출발.onNext(Void())
+출발.onNext(Void())
+출발.onNext(Void())
+
+print("-------------amb-------------")
+//다수의 옵저버가 있으면 그 중 먼저 발생한 옵저버만 구독함.
+let 버스1 = PublishSubject<String>()
+let 버스2 = PublishSubject<String>()
+
+let 버스정류장 = 버스1.amb(버스2)
+
+버스정류장.subscribe(onNext: {
+    print($0)
+}).disposed(by: disposeBag)
+
+버스1.onNext("버스1-승객1")
+버스2.onNext("버스2-승객0")
+버스2.onNext("버스2-승객1")
+버스2.onNext("버스2-승객2")
+버스1.onNext("버스1-승객2")
+버스1.onNext("버스1-승객3")
+
+print("-------------switchLatest-------------")
+//소스에 들어온 옵저버의 이벤트만 방출
+let 학생1 = PublishSubject<String>()
+let 학생2 = PublishSubject<String>()
+let 학생3 = PublishSubject<String>()
+
+let 손들기 = PublishSubject<Observable<String>>() //소스
+
+
+let 손든사람만말할수있음 = 손들기.switchLatest()
+
+손든사람만말할수있음.subscribe(onNext: {
+    print($0)
+})
+.disposed(by: disposeBag)
+
+손들기.onNext(학생1)
+학생1.onNext("학생1: 시작")
+학생2.onNext("학생2: 시작")
+
+손들기.onNext(학생2)
+학생1.onNext("학생1: 누가 말할수 있지")
+학생2.onNext("학생2: 누가 말할수 있지")
+
+손들기.onNext(학생3)
+학생3.onNext("학생3: 나도 말할수 있어?")
+학생1.onNext("학생1: 나 아닐까")
+학생2.onNext("학생2: 에이 나지")
+
+print("-------------reduce-------------")
+Observable.from((1...10))
+//    .reduce(0, accumulator: { summary, newValue in
+//       return summary + newValue
+//    })
+//    .reduce(0) {
+//        summary, newValue in
+//        return summary + newValue
+//    }
+    .reduce(0, accumulator: +)
+    .subscribe(onNext: {
+        print($0)
+    })
+    .disposed(by: disposeBag)
+
+print("-------------scan-------------")
+//reduce와 동일한 역활을 하지만, reduce는 어떤 요소의 결과만 보여준다면, scan은 과정들까지 보여줌.
+Observable.from((1...10))
+    .scan(0, accumulator: +)
+    .subscribe(onNext: {
+        print($0)
+    })
+    .disposed(by: disposeBag)
 
