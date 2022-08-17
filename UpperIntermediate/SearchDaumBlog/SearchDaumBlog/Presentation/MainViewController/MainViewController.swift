@@ -30,7 +30,19 @@ class MainViewController: UIViewController {
     }
     
     private func bind(){
+        let alertsheetForSorting = listView.headerView.sorButtonTapped
+            .map { _ -> Alert in
+                return (title: nil, message: nil, actions:[.title, .datetime, .cancel], style: .actionSheet)
+            }
         
+        alertsheetForSorting
+            .asSignal(onErrorSignalWith: .empty())
+            .flatMapLatest { alert -> Signal<AlertAction> in
+                let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: alert.style)
+                return self.presentAlertController(alertController, actions: alert.actions)
+            }
+            .emit(to: alertActionTapped)
+            .disposed(by: disposeBag)
     }
     
     private func attribute(){
@@ -40,24 +52,24 @@ class MainViewController: UIViewController {
     }
     
     private func layout(){
-        [searBar, listView].forEach { view.addSubview($0)
+        [searBar, listView].forEach {
+            view.addSubview($0)
+        }
             searBar.snp.makeConstraints {
                 $0.top.equalTo(view.safeAreaLayoutGuide)
                 $0.leading.trailing.equalToSuperview()
             }
-            
+
             listView.snp.makeConstraints{
                 $0.top.equalTo(searBar.snp.bottom)
                 $0.leading.trailing.bottom.equalToSuperview()
             }
-        }
     }
-    
 }
 
 //Alert
 extension MainViewController {
-    typealias Alert = (title: String?, message: String?, action:[AlertAction], style: UIAlertController.Style)
+    typealias Alert = (title: String?, message: String?, actions:[AlertAction], style: UIAlertController.Style)
     
     enum AlertAction: AlertActionConvertible{
         case title, datetime, cancel
